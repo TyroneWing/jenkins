@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目管理-用户</title>
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	<!-- Bootstrap 3.3.4 -->
+    	<link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    	<!-- Font Awesome 3.2.1 -->
+    	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    	<!-- Switchery -->
+    	<link href="plugins/switchery/switchery.css" rel="stylesheet" type="text/css" />
+
+    	<link rel="stylesheet" href="css/app.css">
+    	<link rel="stylesheet" href="css/table.css">
+    	<link rel="stylesheet" href="css/box.css">
+    	<link rel="stylesheet" href="css/button.css">
+    	<link rel="stylesheet" href="css/modal.css">
+<body>
+	<header id="header" class="clearfix">
+		<div class="wrapper">
+			<div class="logo pull-left">
+				<h3>项目管理系统</h3>
+			</div>
+			<div class="tools pull-right">
+				<div class="exit">
+					<a href="login.html" title="退出系统"><i class="fa fa-power-off"></i></a>
+				</div>
+			</div>
+			<div class="dropdown info pull-right">
+			  	<a class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+				    	欢迎回来，用户名 !
+			  	</a>
+			</div>
+		</div>
+	</header>
+	<div id="menu" class="clearfix">
+		<div class="wrapper" style="height: 100%; position: relative;">
+			<ul class="menu-list no-margin no-padding clearfix">
+				<li>
+					<a href="index.html">首页</a>
+				</li>
+				<li>
+					<a href="users.html">用户管理</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<main>
+		<div class="wrapper">
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-sm-12">
+					<table class="table table-bordered table-header no-margin" id="user-table">
+						<thead>
+							<tr>
+								<th>部门</th>
+								<th>名称</th>
+								<th>性别</th>
+								<th style="width: 10%;">电话</th>
+								<th>邮箱</th>
+								<th>角色</th>
+								<th style="width: 8%;">状态</th>
+								<th style="width: 20%;">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>技术研发部</td>
+								<td>张三</td>
+								<td>
+									<img src="images/male.png" alt="">
+								</td>
+								<td>13500000000</td>
+								<td>zhangsan@tinckay.com</td>
+								<td>
+									<span class="label label-primary">开发人员</span>
+								</td>
+								<td>
+									<input type="checkbox" class="js-switch" checked />
+								</td>
+								<td>
+									<a href="jvascript: void(0);" class="btn btn-radius btn-primary-transparent" data-target="#addOrModify" data-toggle="modal" role="button">修改信息</a>
+									<a class="btn btn-radius btn-warning-transparent">重置密码</a>
+									<a class="btn btn-radius btn-danger-transparent">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>产品运维部</td>
+								<td>李四</td>
+								<td>
+									<img src="images/male.png" alt="">
+								</td>
+								<td>13500000000</td>
+								<td>lisi@tinckay.com</td>
+								<td>
+									<span class="label label-danger">项目经理</span>
+								</td>
+								<td>
+									<input type="checkbox" class="js-switch" checked />
+								</td>
+								<td>
+									<a href="detail.html" class="btn btn-radius btn-primary-transparent">修改信息</a>
+									<a class="btn btn-radius btn-warning-transparent">重置密码</a>
+									<a class="btn btn-radius btn-danger-transparent">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>技术研发部</td>
+								<td>王五</td>
+								<td>
+									<img src="images/male.png" alt="">
+								</td>
+								<td>13500000000</td>
+								<td>wangwu@tinckay.com</td>
+								<td>
+									<span class="label label-primary">开发人员</span>
+								</td>
+								<td>
+									<input type="checkbox" class="js-switch" checked />
+								</td>
+								<td>
+									<a href="detail.html" class="btn btn-radius btn-primary-transparent">修改信息</a>
+									<a class="btn btn-radius btn-warning-transparent">重置密码</a>
+									<a class="btn btn-radius btn-danger-transparent">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>行政部</td>
+								<td>钱久</td>
+								<td>
+									<img src="images/male.png" alt="">
+								</td>
+								<td>13500000000</td>
+								<td>qianjiu@tinckay.com</td>
+								<td>
+									<span class="label label-primary">开发人员</span>
+								</td>
+								<td>
+									<input type="checkbox" class="js-switch" checked />
+								</td>
+								<td>
+									<a href="detail.html" class="btn btn-radius btn-primary-transparent">修改信息</a>
+									<a class="btn btn-radius btn-warning-transparent">重置密码</a>
+									<a class="btn btn-radius btn-danger-transparent">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>财务部</td>
+								<td>赵器</td>
+								<td>
+									<img src="images/male.png" alt="">
+								</td>
+								<td>13500000000</td>
+								<td>zhaoqi@tinckay.com</td>
+								<td>
+									<span class="label label-primary">开发人员</span>
+								</td>
+								<td>
+									<input type="checkbox" class="js-switch" checked />
+								</td>
+								<td>
+									<a href="detail.html" class="btn btn-radius btn-primary-transparent">修改信息</a>
+									<a class="btn btn-radius btn-warning-transparent">重置密码</a>
+									<a class="btn btn-radius btn-danger-transparent">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>技术研发部</td>
+								<td>刘六</td>
+								<td>
+									<img src="images/male.png" alt="">
+								</td>
+								<td>13500000000</td>
+								<td>liuliu@tinckay.com</td>
+								<td>
+									<span class="label label-primary">开发人员</span>
+								</td>
+								<td>
+									<input type="checkbox" class="js-switch" checked />
+								</td>
+								<td>
+									<a href="detail.html" class="btn btn-radius btn-primary-transparent">修改信息</a>
+									<a class="btn btn-radius btn-warning-transparent">重置密码</a>
+									<a class="btn btn-radius btn-danger-transparent">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>产品运维部</td>
+								<td>钟董</td>
+								<td>
+									<img src="images/female.png" alt="">
+								</td>
+								<td>13500000000</td>
+								<td>zhongdong@tinckay.com</td>
+								<td>
+									<span class="label label-danger">项目经理</span>
+								</td>
+								<td>
+									<input type="checkbox" class="js-switch" checked />
+								</td>
+								<td>
+									<a href="detail.html" class="btn btn-radius btn-primary-transparent">修改信息</a>
+									<a class="btn btn-radius btn-warning-transparent">重置密码</a>
+									<a class="btn btn-radius btn-danger-transparent">删除</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer></footer>
+
+	<div class="modal fade custom-modal" id="addOrModify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        				<h4 class="modal-title">添加／修改用户</h4>
+		      		</div>
+		      		<div class="modal-body" style="padding: 30px 60px;">
+		        			<div class="row">
+		        				<div class="col-sm-6">
+		        					<div class="form-group">
+							    	<label class="control-label">名称</label>
+							    	<div>
+							      		<input type="text" class="form-control" placeholder="名称">
+							    	</div>
+						    	</div>
+						    	<div class="form-group" >
+							    	<label class="control-label">密码</label>
+							    	<div>
+							      		<input type="text" class="form-control" placeholder="密码">
+							    	</div>
+						    	</div>
+						    	<div class="form-group">
+							    	<label class="control-label">部门</label>
+							    	<div>
+							      		<select class="form-control custom-select">
+							      			<option value="技术研发部">技术研发部</option>
+							      			<option value="产品运维部">产品运维部</option>
+							      			<option value="行政部">行政部</option>
+							      			<option value="财务部">财务部</option>
+							      		</select>
+							    	</div>
+						    	</div>
+		        				</div>
+		        				<div class="col-sm-6">
+		        					<div class="form-group">
+							    	<label class="control-label">性别</label>
+							    	<div>
+							      		<select class="form-control custom-select">
+							      			<option value="男">男</option>
+							      			<option value="女">女</option>
+							      		</select>
+							    	</div>
+						    	</div>
+						    	<div class="form-group">
+							    	<label class="control-label">联系电话</label>
+							    	<div>
+							      		<input type="text" class="form-control" placeholder="联系电话">
+							    	</div>
+						    	</div>
+						    	<div class="form-group">
+							    	<label class="control-label">邮箱</label>
+							    	<div>
+							      		<input type="text" class="form-control" placeholder="邮箱">
+							    	</div>
+						    	</div>
+		        				</div>
+		        			</div>
+		      		</div>
+		      		<div class="modal-footer">
+		      			<button class="pull-right btn btn-primary btn-sm">保存</button>
+		      		</div>
+		    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- jQuery 2.1.4 -->
+    	<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    	<!-- Bootstrap 3.3.2 JS -->
+    	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    	<!-- Switchery -->
+    	<script src="plugins/switchery/switchery.js"></script>
+
+	<script src="js/app.js"></script>
+
+    	<script type="text/javascript">
+    		$(document).ready(function(){
+	    		var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+			elems.forEach(function(html) {
+			  	var switchery = new Switchery(html, { size: 'small' });
+			});
+		});
+    	</script>
+</body>
+</html>

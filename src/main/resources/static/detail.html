@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目管理-项目详情</title>
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	<!-- Bootstrap 3.3.4 -->
+    	<link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    	<!-- Font Awesome 3.2.1 -->
+    	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    	<link rel="stylesheet" href="css/app.css" />
+    	<link rel="stylesheet" href="css/table.css" />
+    	<link rel="stylesheet" href="css/box.css" />
+    	<link rel="stylesheet" href="css/button.css" />
+    	<link rel="stylesheet" href="css/modal.css" />
+<body>
+	<header id="header" class="clearfix">
+		<div class="wrapper">
+			<div class="logo pull-left">
+				<h3>项目管理系统</h3>
+			</div>
+			<div class="tools pull-right">
+				<div class="exit">
+					<a href="login.html" title="退出系统"><i class="fa fa-power-off"></i></a>
+				</div>
+			</div>
+			<div class="dropdown info pull-right">
+			  	<a class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+				    	欢迎回来，用户名 !
+			  	</a>
+			</div>
+		</div>
+	</header>
+	<div id="menu" class="clearfix">
+		<div class="wrapper" style="height: 100%; position: relative;">
+			<ul class="menu-list no-margin no-padding clearfix">
+				<li>
+					<a href="index.html">首页</a>
+				</li>
+				<li>
+					<a href="users.html">用户管理</a>
+				</li>
+			</ul>
+			<div class="pull-right tools">
+				<ul class="no-margin no-padding">
+					<li>
+						<input type="text" class="search-input" placeholder="请输入搜索内容">
+					</li>
+					<li>
+						<a href="javascript: void(0);" onclick="showSearchInput(this);">
+							<i class="fa fa-search"></i> 查询
+						</a>
+					</li>
+					<li class="division"></li>
+					<li>
+						<a href="detail-add.html">
+							<i class="fa fa-plus"></i> 新增
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<main>
+		<div class="wrapper">
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-sm-12">
+					<div class="box box-default">
+						<div class="box-header with-background clearfix">
+							<h4 class="box-title no-margin pull-left">项目名称</h4>
+							<div class="box-tools pull-right">
+								<button class="btn btn-gray">
+									<i class="glyphicon glyphicon-pencil"></i>
+								</button>
+							</div>
+						</div>
+						<div class="box-body no-padding">
+							<div class="row">
+								<div class="col-sm-8" style="padding-right: 0; border-right: 1px solid #E4E4E4;">
+									<div class="project-detail">
+										<div class="clearfix">
+										  	<div class="columns">
+										  		<div class="item">
+										  			<label>项目编号：</label>
+													<span>XMBH0001</span>
+										  		</div>
+												<div class="item">
+													<label>计划开始时间：</label>
+													<span>2016-05-01</span>
+												</div>
+												<div class="item">
+													<label>实际开始时间：</label>
+													<span>2016-05-15</span>
+												</div>
+												<div class="item">
+													<label>优先级：</label>
+													<span>普通</span>
+												</div>
+											</div>
+											<div class="columns" style="width: 40%;">
+												<div class="item">
+													<label>负责人：</label>
+													<span>张三</span>
+												</div>
+												<div class="item">
+													<label>计划完成时间：</label>
+													<span>2016-09-01</span>
+												</div>
+												<div class="item">
+													<label>实际完成时间：</label>
+													<span>2016-10-02</span>
+												</div>
+												<div class="item">
+													<label>进度：</label>
+													<div class="progress" style="width: 60%;">
+													  	<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+													    		100%
+													  	</div>
+													</div>
+												</div>
+											</div>
+											<div class="columns no-margin" style="width: 18%;">
+												<div class="item">
+													<label>状态：</label>
+													<span class="text-primary">完成</span>
+												</div>
+												<div class="item">
+													<label>预计耗时：</label>
+													<span>120 天</span>
+												</div>
+											</div>
+										</div>
+										<div style="margin-bottom: 20px;">
+											<span class="pull-left" style="line-height: 50px; margin-right: 10px;">配合人：</span>
+											<ul class="user-list clearfix">
+						        						<li>
+						        							<img src="images/user-default.png" alt="..." class="img-circle img-thumbnail">
+						        							<span>张三</span>
+						        						</li>
+						        						<li>
+						        							<img src="images/user-default.png" alt="..." class="img-circle img-thumbnail">
+						        							<span>李四</span>
+						        						</li>
+						        						<li>
+						        							<img src="images/user-default.png" alt="..." class="img-circle img-thumbnail">
+						        							<span>王五</span>
+						        						</li>
+						        						<li>
+						        							<img src="images/user-default.png" alt="..." class="img-circle img-thumbnail">
+						        							<span>刘六</span>
+						        						</li>
+						        						<li>
+						        							<img src="images/user-default.png" alt="..." class="img-circle img-thumbnail">
+						        							<span>钱久</span>
+						        						</li>
+						        						<li>
+						        							<button class="btn btn-plus-circle" data-toggle="modal" data-target="#addUser"><i class="glyphicon glyphicon-plus"></i></button>
+						        						</li>
+						        					</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4" style="padding-left: 0;">
+									<div class="box box-solid" style="box-shadow: none;">
+										<div class="box-header with-border clearfix">
+											<h5 class="box-title text-left" style="margin: 20px 0px;">项目描述</h5>
+										</div>
+										<div class="box-body">
+											采用现今Java Web领域主流的Spring应用框架，使用先进的流程引擎对业务流程操作进行统一的管理和监控，包括企业管理、监控设备管理、预警管理、系统管理等功能模块，使用Tomcat应用服务器对系统应用统一管理，使用MySql数据库集群及分布式文件存储进行管理
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-sm-6">
+					<div class="box box-default">
+						<div class="box-header with-background clearfix">
+							<h4 class="box-title no-margin pull-left">历史记录</h4>
+							<div class="box-tools pull-right">
+								<button class="btn btn-gray">
+									<i class="glyphicon glyphicon-align-justify"></i>
+								</button>
+							</div>
+						</div>
+						<div class="box-body no-padding">
+							<ul class="log-list">
+								<li>
+									<span>2016-11-04 16:40 张三登录系统成功</span>
+								</li>
+								<li>
+									<span>2016-11-04 16:40 <a href="#">富山项目</a>发布成功</span>
+								</li>
+								<li>
+									<span>2016-11-04 16:40 <a href="#">牲畜无害化</a>发布成功</span>
+								</li>
+								<li>
+									<span>2016-11-04 16:40 <a href="#">海鸥项目</a>发布成功</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="box box-default">
+						<div class="box-header with-background clearfix">
+							<h4 class="box-title no-margin pull-left">附件记录</h4>
+							<div class="box-tools pull-right">
+								<button class="btn btn-gray">
+									<i class="glyphicon glyphicon-align-justify"></i>
+								</button>
+							</div>
+						</div>
+						<div class="box-body">
+							<ul class="file-list no-padding clearfix">
+								<li class="file">
+									<span>
+										<i class="fa fa-file-pdf-o"></i>
+									</span>
+									<a>文件名称</a>
+								</li>
+								<li>
+									<button class="btn btn-plus-rect" data-toggle="modal" data-target="#uploadFile"><i class="glyphicon glyphicon-plus"></i></button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer></footer>
+
+	<div class="modal fade custom-modal bg-gray" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        				<h4 class="modal-title">富山项目</h4>
+		      		</div>
+		      		<div class="modal-body">
+		        			<div class="row">
+		        				<div class="col-sm-7">
+		        					<p>项目人员<span style="float: right; color: #777;">已选 0 人</span></p>
+		        					<div class="department-panel">
+		        						<div class="user-select-item">
+		        							<div class="box-header no-padding">
+										<span class="ng-binding">天基网控</span>
+										<div class="pull-right no-margin">
+						                   				<button class="btn btn-box-tool no-padding">
+						                   					<i class="fa fa-times"></i>
+						                   				</button>
+						                 			</div>
+									</div>
+		        						</div>
+		        					</div>
+		        				</div>
+		        				<div class="col-sm-5">
+		        					<p>所有人员</p>
+		        					<div class="department-panel">
+		        						<p>广东天基网控环境科技有限公司</p>
+		        						<p><input type="checkbox"> 全选</p>
+			        					<div class="list-group department-list" id="#userList">
+								  	<div class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseOne" aria-controls="collapseOne">
+								  		<span class="pull-right">3  人</span>
+									    	<div class="name">技术研发部</div>
+								  	</div>
+								  	<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 张三
+									      </p>
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 王五
+									      </p>
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 刘六
+									      </p>
+								    	</div>
+									<div href="#" class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseTwo" aria-controls="collapseTwo">
+										<span class="pull-right">2  人</span>
+									    	<span class="name">产品运维部</span>
+									</div>
+									<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 李四
+									      </p>
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 钟董
+									      </p>
+								    	</div>
+									<div href="#" class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseThree" aria-controls="collapseThree">
+										<span class="pull-right">1  人</span>
+									    	<span class="name">行政部</span>
+									</div>
+									<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 钱久
+									      </p>
+								    	</div>
+									<div href="#" class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseFour" aria-controls="collapseFour">
+										<span class="pull-right">1  人</span>
+									    	<span class="name">财务部</span>
+									</div>
+									<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 赵器
+									      </p>
+								    	</div>
+								</div>
+							  </div>
+		        				</div>
+		        			</div>
+		      		</div>
+		      		<div class="modal-footer">
+		        			<button type="button" class="btn btn-primary">确定</button>
+		      		</div>
+		    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div class="modal fade custom-modal no-title" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		      		</div>
+		      		<div class="modal-body">
+		        			<form class="form-horizontal" role="form">
+						<div class="form-group">
+						    	<label for="inputEmail3" class="col-sm-2 control-label">选择文件</label>
+						    	<div class="col-sm-8">
+							     	<div class="input-group input-group-sm">
+				             					<input type="text" class="form-control" id="filename" readonly="readonly">
+						             			<input type="file" id="file" style="display:none" onchange="filename.value=this.value" />
+						             			<span class="input-group-btn">
+						               			<button class="btn btn-default btn-flat" type="button" onclick="file.click();">浏览</button>
+						             			</span>
+						           		</div>
+						    	</div>
+						    	<div class="col-sm-2">
+							    	<button class="btn btn-info btn-flat btn-sm" type="button">上传</button>
+						    	</div>
+					  	</div>
+				    	</form>
+		      		</div>
+		    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- jQuery 2.1.4 -->
+    	<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    	<!-- Bootstrap 3.3.2 JS -->
+    	<script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<script src="js/app.js"></script>
+</body>
+</html>

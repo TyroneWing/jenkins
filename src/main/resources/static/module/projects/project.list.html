@@ -1,0 +1,214 @@
+<div id="menu" class="clearfix">
+	<div class="wrapper" style="height: 100%; position: relative;">
+		<ul class="menu-list no-margin no-padding clearfix">
+			<li class="actived">
+				<a href="#/platform/projects">首页</a>
+			</li>
+			<li>
+				<a href="#/platform/users">用户管理</a>
+			</li>
+			<li>
+				<a href="#/platform/companies">客户管理</a>
+			</li>
+		</ul>
+	</div>
+	<div class="operate-tools">
+		<ul class="no-margin no-padding clearfix">
+			<li style="display: none;">
+				<div class="form-group has-feedback">
+				            <input type="text" class="form-control search-input" placeholder="请输入搜索内容" ng-model="projectFilter">
+				          <button class="form-control-feedback btn-img" style="border: 0; pointer-events: auto;" onclick="showSearchInput();"><i class="glyphicon glyphicon-remove"></i></button>
+			          	</div>
+			</li>
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" onclick="showSearchInput();" id="searchBtn"><i class="fa fa-search"></i> 搜索</button>
+			</li>
+			<li class="division"></li>
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" ng-click="addOrModifyProject('add', '');"><i class="fa fa-plus"></i> 新增</button>
+			</li>
+		</ul>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-12">
+				<table class="table table-bordered table-header no-margin">
+					<thead>
+						<tr>
+							<th>项目编号</th>
+							<th>项目名称</th>
+							<th>负责人</th>
+							<th>开始时间</th>
+							<th>结束时间</th>
+							<th style="width: 10%;">进度</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="project-list">
+						<tr ng-repeat="project in projects | filter: {name: projectFilter}">
+							<td>{{ project.code }}</td>
+							<td>{{ project.name }}</td>
+							<td>{{ project.managerName}}</td>
+							<td>{{ project.planStart }}</td>
+							<td>{{ project.planEnd }}</td>
+							<td>
+								<div class="progress">
+								  	<div ng-class="{
+								  		'0':'progress-bar progress-bar-success', '1':'progress-bar', '2':'progress-bar progress-bar-danger', '3': 'progress-bar progress-bar-warning', '10': 'progress-bar progress-bar-warning'}[project.state]" role="progressbar" aria-valuenow="{{ project.percent }}" aria-valuemin="0" aria-valuemax="100" style="width:{{project.percent}}%;">
+								    		{{ project.percent }}%
+								  	</div>
+								</div>
+							</td>
+							<td ng-switch="project.state">
+								<span ng-switch-when="0" class="text-success">新增</span>  
+								<span ng-switch-when="1" class="text-primary">完结</span>
+								<span ng-switch-when="2" class="text-danger">取消</span>
+								<span ng-switch-when="3" class="text-danger">暂停</span>
+								<span ng-switch-when="10" class="text-warning">进行中</span>
+								<span ng-switch-default>{{ task.status }}</span> 
+							</td>
+							<td>
+								<a href="#/platform/projects/detail/{{ project.id }}" class="btn btn-radius btn-primary-transparent">查看详情</a>
+								<a class="btn btn-radius btn-green-transparent" ng-click="addOrModifyProject('modify', project.id)">修改</a>
+								<a href="gantt.html?pid={{project.id}}" class="btn btn-radius btn-warning-transparent">分配任务</a>
+								<a href="javascript: void(0);" class="btn btn-radius btn-primary-transparent" ng-click="addDemand(project.id)">添加需求</a>
+								<a class="btn btn-radius btn-danger-transparent" ng-click="deleteProject($index, project.id)">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-12">
+				<div class="pull-right">
+					<tk-pagination pages="pages"></tk-pagination>
+				</div>
+			</div>
+		</div>
+		<div class="row"  style="margin-bottom: 20px;">
+			<div class="col-sm-6">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">最新动态</h4>
+						<div class="box-tools pull-right">
+							<button class="btn btn-gray">
+								<i class="glyphicon glyphicon-align-justify"></i>
+							</button>
+						</div>
+					</div>
+					<div class="box-body no-padding">
+						<ul class="log-list min-height">
+							<li ng-repeat="operate in opts track by $index">
+								<span>{{ operate.optDate }} {{ operate.userName }} {{ operate.resume }}</span>
+							</li>
+							<!-- <li>
+								<span>2016-11-04 16:40 张三登录系统成功</span>
+							</li>
+							<li>
+								<span>2016-11-04 16:40 <a>富山项目</a>发布成功</span>
+							</li>
+							<li>
+								<span>2016-11-04 16:40 <a href="#">牲畜无害化</a>发布成功</span>
+							</li>
+							<li>
+								<span>2016-11-04 16:40 <a href="#">海鸥项目</a>发布成功</span>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">任务提醒</h4>
+						<div class="box-tools pull-right">
+							<button class="btn btn-gray">
+								<i class="glyphicon glyphicon-align-justify"></i>
+							</button>
+						</div>
+					</div>
+					<div class="box-body no-padding">
+						<ul class="log-list min-height">
+							<li ng-repeat="remind in reminds track by $index">
+								<span>距离<a href="javascript: void(0);" ng-click="findTask(remind.id)"> {{ remind.tilte }} </a>结束时间 {{ remind.planEnd }} 还剩 <lable class="badge badge-red">{{ remind.remainDays }}</lable> 天，目前进度 {{ remind.progress }}%</span>
+							</li>
+							<!-- <li>
+								<span>距离<a  ng-click="" data-toggle="modal" data-target="#projectDetail" role="button">富山项目</a>结束时间2016-12-11还剩 <lable class="badge badge-red">3</lable> 天，目前进度40%</span>
+							</li>
+							<li>
+								<span>距离<a href="">富山项目</a>结束时间2016-12-11还剩 <lable class="badge badge-red">3</lable> 天，目前进度40%</span>
+							</li>
+							<li>
+								<span>距离<a href="">富山项目</a>结束时间2016-12-11还剩 <lable class="badge badge-red">3</lable> 天，目前进度40%</span>
+							</li>
+							<li>
+								<span>距离<a href="">富山项目</a>结束时间2016-12-11还剩 <lable class="badge badge-red">3</lable> 天，目前进度40%</span>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<div class="modal fade custom-modal" id="projectDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        				<h4 class="modal-title">{{ task.tilte }}</h4>
+	      		</div>
+	      		<div class="modal-body" style="padding: 30px 60px;">
+	        			<div class="row">
+	        				<div class="col-sm-6">
+	        					<p>
+	        						负责人：<span>{{ task.manager }}</span>
+	        					</p>
+	        					<p>
+	        						计划开始时间：<span>{{ task.planStart }}</span>
+	        					</p>
+	        					<p>
+	        						实际开始时间：<span>{{ task.realStart }}</span>
+	        					</p>
+	        					<p>
+	        						优先级：<span>{{ task.level }}</span>
+	        					</p>
+	        				</div>
+	        				<div class="col-sm-6">
+	        					<p ng-switch="task.state">
+	        						状态：
+							<span ng-switch-when="0" class="text-success">新增</span>  
+							<span ng-switch-when="1" class="text-primary">完结</span>
+							<span ng-switch-when="2" class="text-danger">取消</span>
+							<span ng-switch-when="3" class="text-danger">暂停</span>
+							<span ng-switch-when="10" class="text-warning">进行中</span>
+							<span ng-switch-default>{{ task.state }}</span> 
+	        					</p>
+	        					<p>
+	        						计划完成时间：<span>{{ task.planEnd }}</span>
+	        					</p>
+	        					<p>
+	        						实际完成时间：<span>{{ task.realEnd }}</span>
+	        					</p>
+	        					<p>
+	        						预计耗时：<span>{{ task.consumingTime }} 天</span>
+	        					</p>
+	        				</div>
+	        			</div>
+	        			<div class="row" style="margin-bottom: 20px;">
+	        				<div class="col-sm-7">
+	        						<span class="pull-left">进度：</span>
+							<div class="progress" style="width: 60%;">
+							  	<div ng-class="{'0':'progress-bar progress-bar-success', '1':'progress-bar', '2':'progress-bar progress-bar-danger', '3': 'progress-bar progress-bar-warning', '10': 'progress-bar progress-bar-warning'}[task.state]" role="progressbar" aria-valuenow="{{ task.percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ task.percent }}%;">
+							    		{{ task.percent }}%
+							  	</div>
+							</div>
+	        				</div>
+	        			</div>
+	      		</div>
+	    	</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

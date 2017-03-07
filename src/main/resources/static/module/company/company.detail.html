@@ -1,0 +1,184 @@
+<div id="menu" class="clearfix">
+	<div class="wrapper" style="height: 100%; position: relative;">
+		<ul class="menu-list no-margin no-padding clearfix">
+			<li>
+				<a href="#/platform/projects">首页</a>
+			</li>
+			<li>
+				<a href="#/platform/users">用户管理</a>
+			</li>
+			<li class="actived">
+				<a href="#/platform/companies">客户管理</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-8">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">{{ company.name }}</h4>
+						<div class="box-tools pull-right">
+							<button class="btn btn-gray" ng-click="modifyCompany(company.id)">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</button>
+						</div>
+					</div>
+					<div class="box-body no-padding">
+						<div class="row">
+							<div class="col-sm-6" style="padding-right: 0; border-right: 1px solid #E4E4E4; min-height: 250px;">
+								<div class="project-detail">
+									<div style="margin-bottom: 20px;">
+										<span class="pull-left" style="margin-right: 10px;">网址：</span>
+										<span><a href="http://{{ company.www }}" target="_blank">{{ company.www }}</a></span>
+									</div>
+									<div style="margin-bottom: 20px;">
+										<span class="pull-left" style="margin-right: 10px;">地址：</span>
+										<span>{{ company.address }}</span>
+									</div>
+									<div style="margin-bottom: 20px;">
+										<span class="pull-left" style="margin-right: 10px;">行业类型：</span>
+										<span>{{ company.industryId }}</span>
+									</div>
+									<div style="margin-bottom: 20px;">
+										<span class="pull-left" style="margin-right: 10px;">客户类型：</span>
+										<span>{{ company.flag }}</span>
+									</div>
+									<div style="margin-bottom: 20px;">
+										<span class="pull-left" style="margin-right: 10px;">电话：</span>
+										<span>{{ company.tel }}</span>
+									</div>
+									<div style="margin-bottom: 20px;">
+										<span class="pull-left" style="margin-right: 10px;">邮箱：</span>
+										<span>{{ company.email }}</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3" style="padding-left: 0; padding-right: 0; border-right: 1px solid #E4E4E4; min-height: 250px;">
+								<div class="box box-solid" style="box-shadow: none;">
+									<div class="box-header with-border clearfix">
+										<h5 class="box-title text-left" style="margin: 20px 0px;">联系人</h5>
+									</div>
+									<div class="box-body" style="border: 0;">
+										<p ng-repeat="linkman in linkmanList track by $index">
+											{{ linkman.name }}
+											<span class="pull-right">{{ linkman.mobile }}</span>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3" style="padding-left: 0; min-height: 250px;">
+								<div class="box box-solid" style="box-shadow: none;">
+									<div class="box-header with-border clearfix">
+										<h5 class="box-title text-left" style="margin: 20px 0px;">跟进人</h5>
+									</div>
+									<div class="box-body" style="border: 0;">
+										<p ng-repeat="salesman in salesmanList track by $index">
+											{{ salesman.name }}
+											<span class="pull-right">{{ salesman.mobile }}</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">客户描述</h4>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-sm-12" style="min-height: 210px;">
+								{{ company.resume }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-6">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">项目列表</h4>
+					</div>
+					<div class="box-body no-padding">
+						<table class="table">
+						 	<tr>
+						  		<td class="no-padding">
+							   		<table class="table no-margin">
+							     		<tr style="background-color: #f6f6f6;">
+											<th class="text-center" style="width: 39.3%">项目名称</th>
+											<th class="text-center" style="width: 33.3%">时间</th>
+											<th class="text-center" style="width: 27.3%">状态</th>
+										</tr>
+							   		</table>
+						  		</td>
+						 	</tr>
+							<tr>
+								<td class="no-padding">
+							  		 <div style="width:100%; height:300px; overflow:auto;">
+									     <table class="table">
+								       		<tr ng-repeat="project in projectList track by $index">
+												<td class="text-center" style="width: 39.3%">{{ project.name }}</td>
+												<td class="text-center" style="width: 33.3%">{{ project.planStart }} ~ {{ project.planEnd }}</td>
+												<td class="text-center" style="width: 27.3%" ng-switch="project.state">
+													<span ng-switch-when="0" class="text-success">新增</span>  
+													<span ng-switch-when="1" class="text-primary">完结</span>
+													<span ng-switch-when="2" class="text-danger">取消</span>
+													<span ng-switch-when="3" class="text-danger">暂停</span>
+													<span ng-switch-when="10" class="text-warning">进行中</span>
+													<span ng-switch-default>{{ project.status }}</span> 
+												</td>
+											</tr>
+									     </table>  
+							   		</div>
+						  		</td>
+						 	</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">跟进记录</h4>
+					</div>
+					<div class="box-body no-padding">
+						<table class="table">
+						 	<tr>
+						  		<td class="no-padding">
+							   		<table class="table no-margin">
+							     		<tr style="background-color: #f6f6f6;">
+											<th class="text-center" style="width: 36.3%">跟进内容</th>
+											<th class="text-center" style="width: 30.3%">跟进人</th>
+											<th class="text-center" style="width: 33.3%">时间</th>
+										</tr>
+							   		</table>
+						  		</td>
+						 	</tr>
+							<tr>
+								<td class="no-padding">
+							  		 <div style="width:100%; height:300px; overflow:auto;">
+									     <table class="table">
+								       		<tr ng-repeat="log in logList track by $index">
+												<td class="text-center" style="width: 36.3%">{{ log.title }}</td>
+												<td class="text-center" style="width: 30.3%">{{ log.creator }}</td>
+												<td class="text-center" style="width: 33.3%">{{ log.time }}</td>
+											</tr>
+									     </table>  
+							   		</div>
+						  		</td>
+						 	</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

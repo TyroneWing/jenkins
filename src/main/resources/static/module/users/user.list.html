@@ -1,0 +1,84 @@
+<div id="menu" class="clearfix">
+	<div class="wrapper" style="height: 100%; position: relative;">
+		<ul class="menu-list no-margin no-padding clearfix">
+			<li>
+				<a href="#/platform/projects">首页</a>
+			</li>
+			<li  class="actived">
+				<a href="#/platform/users">用户管理</a>
+			</li>
+			<li>
+				<a href="#/platform/companies">客户管理</a>
+			</li>
+		</ul>
+	</div>
+	<div class="operate-tools">
+		<ul class="no-margin no-padding clearfix">
+			<li style="display: none;">
+				<div class="form-group has-feedback">
+				            <input type="text" class="form-control search-input" placeholder="请输入搜索内容" ng-model="userFilter">
+				          <!--   <span class="glyphicon glyphicon-remove form-control-feedback"></span> -->
+				          <button class="form-control-feedback btn-img" style="border: 0; pointer-events: auto;" onclick="showSearchInput();"><i class="glyphicon glyphicon-remove"></i></button>
+			          	</div>
+			</li>
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" onclick="showSearchInput();" id="searchBtn"><i class="fa fa-search"></i> 搜索</button>
+			</li>
+			<li class="division"></li>
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" ng-click="addOrModifyUser('');"><i class="fa fa-plus"></i> 新增</button>
+			</li>
+		</ul>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-12">
+				<table class="table table-bordered table-header no-margin">
+					<thead>
+						<tr>
+							<th>部门</th>
+							<th>工号</th>
+							<th>名称</th>
+							<th>性别</th>
+							<th style="width: 10%;">电话</th>
+							<th>邮箱</th>
+							<th>角色</th>
+							<th style="width: 8%;">状态</th>
+							<th style="width: 20%;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in users | filter: {name: userFilter}">
+							<td>{{ user.departmentId }}</td>
+							<td>{{ user.num }}</td>
+							<td>{{ user.name }}</td>
+							<td>
+								<img ng-src="{{ user.sex == true ? 'images/male.png': 'images/female.png'}}" alt="">
+							</td>
+							<td>{{ user.mobile }}</td>
+							<td>{{ user.email }}</td>
+							<td>
+								<span class="label label-primary">{{ user.roleId }}</span>
+							</td>
+							<td>
+								<tnswitchery index="$index+200"  checked="!user.leave" disabled="disabled"/>
+							</td>
+							<td>
+								<a class="btn btn-radius btn-primary-transparent" role="button" ng-click="addOrModifyUser(user.id)">修改信息</a>
+								<a class="btn btn-radius btn-warning-transparent" ng-click="changePwd(user.id)">重置密码</a>
+								<a class="btn btn-radius btn-danger-transparent" ng-click="deleteUser($index, user.id)">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-12">
+				<div class="pull-right">
+					<tk-pagination pages="pages"></tk-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

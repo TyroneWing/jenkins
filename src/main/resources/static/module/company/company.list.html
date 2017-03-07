@@ -1,0 +1,76 @@
+<div id="menu" class="clearfix">
+	<div class="wrapper" style="height: 100%; position: relative;">
+		<ul class="menu-list no-margin no-padding clearfix">
+			<li>
+				<a href="#/platform/projects">首页</a>
+			</li>
+			<li>
+				<a href="#/platform/users">用户管理</a>
+			</li>
+			<li class="actived">
+				<a href="#/platform/companies">客户管理</a>
+			</li>
+		</ul>
+	</div>
+	<div class="operate-tools">
+		<ul class="no-margin no-padding clearfix">
+			<li style="display: none;">
+				<div class="form-group has-feedback">
+				            <input type="text" class="form-control search-input" placeholder="请输入搜索内容" ng-model="companyFilter">
+				          <button class="form-control-feedback btn-img" style="border: 0; pointer-events: auto;" onclick="showSearchInput();"><i class="glyphicon glyphicon-remove"></i></button>
+			          	</div>
+			</li>
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" onclick="showSearchInput();" id="searchBtn"><i class="fa fa-search"></i> 搜索</button>
+			</li>
+			<li class="division"></li>
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" ng-click="addOrModifyCompany('add', '');"><i class="fa fa-plus"></i> 新增</button>
+			</li>
+		</ul>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-12">
+				<table class="table table-bordered table-header no-margin">
+					<thead>
+						<tr>
+							<th>客户名称</th>
+							<th>行业类型</th>
+							<th>网站</th>
+							<th>联系人</th>
+							<th>电话</th>
+							<th>项目数量</th>
+							<th>跟进人</th>
+							<th style="width: 23%;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="company in companies | filter: {name: companyFilter}">
+							<td>{{ company.name }}</td>
+							<td>{{ company.industryId }}</td>
+							<td>{{ company.www }}</td>
+							<td>{{ company.linkman }}</td>
+							<td>{{ company.tel }}</td>
+							<td>{{ company.pjtNum }}</td>
+							<td>{{ company.salesman }}</td>
+							<td>
+								<a href="#/platform/companies/detail/{{ company.id }}" class="btn btn-radius btn-primary-transparent">查看详情</a>
+								<a class="btn btn-radius btn-green-transparent" role="button" ng-click="addOrModifyCompany('modify', company.id)">修改</a>
+								<a class="btn btn-radius btn-warning-transparent" role="button" ng-click="addLog(company.id)">跟进记录</a>
+								<a class="btn btn-radius btn-danger-transparent" role="button" ng-click="deleteCompany($index, company.id)">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-12">
+				<div class="pull-right">
+					<tk-pagination pages="pages"></tk-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

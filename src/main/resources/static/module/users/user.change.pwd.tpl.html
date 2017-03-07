@@ -1,0 +1,42 @@
+<div class="modal-content" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-label="Close" ng-click="cancel()">
+			<span aria-hidden="true">×</span>
+		</button>
+		<h4 class="modal-title">
+			重置密码
+		</h4>
+	</div>
+	<div class="modal-body" style="padding: 30px 60px;">
+		<form role="form" id="userForm">
+			<div class="row">
+        				<div class="col-sm-12">
+					    	<div class="form-group" >
+						    	<label class="control-label">原密码</label>
+						    	<div>
+						      		<input type="text" class="form-control" placeholder="密码" ng-model="user.oldpwd" vType="length" vMin="5" onblur="onblurVali(this)">
+						    	</div>
+					    	</div>
+				    		<div class="form-group" >
+						    	<label class="control-label">新密码</label>
+						    	<div>
+						      		<input type="text" class="form-control" placeholder="新密码" ng-model="user.newpwd" vType="length" vMin="5" onblur="onblurVali(this)">
+						    	</div>
+					    	</div>
+				    		<div class="form-group" >
+						    	<label class="control-label">重复密码</label>
+						    	<div>
+						      		<input type="text" class="form-control" placeholder="重复密码" ng-model="user.repeatpwd" vType="length" vMin="5" onblur="onblurVali(this)">
+						    	</div>
+					    	</div>
+        				</div>
+        				<input type="hidden" ng-model="user.id">
+        			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+	    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="cancel()">关闭</button>
+	    <button type="button" class="btn btn-primary pull-right" ng-click="ok(user)">保存</button>
+    </div>
+</div>

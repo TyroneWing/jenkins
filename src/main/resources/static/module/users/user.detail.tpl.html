@@ -1,0 +1,78 @@
+<div class="modal-content" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-label="Close" ng-click="cancel()">
+			<span aria-hidden="true">×</span>
+		</button>
+		<h4 class="modal-title">
+			增加/修改用户
+		</h4>
+	</div>
+	<div class="modal-body" style="padding: 30px 60px;">
+		<form role="form" id="userForm">
+			<div class="row">
+        				<div class="col-sm-6">
+        					<div class="form-group">
+					    	<label class="control-label">名称</label>
+					    	<div>
+					      		<input type="text" class="form-control" placeholder="名称" ng-model="user.name">
+					    	</div>
+				    	</div>
+				    	<div class="form-group" >
+					    	<label class="control-label">密码</label>
+					    	<div>
+					      		<input type="text" class="form-control" placeholder="密码" ng-model="user.password" vType="length" vMin="5" onblur="onblurVali(this)">
+					    	</div>
+				    	</div>
+				    	<div class="form-group">
+					    	<label class="control-label">部门</label>
+					    	<div>
+					      		<select class="form-control custom-select" ng-model="user.departmentId" ng-options="option.id as option.name for option in deptOptions">
+					      		
+					      		</select>
+					    	</div>
+				    	</div>
+				    	<div class="form-group">
+					    	<label class="control-label">角色</label>
+					    	<div>
+					      		<select class="form-control custom-select" ng-model="user.roleId" ng-options="option.id as option.description for option in roleOptions">
+					      		</select>
+					    	</div>
+				    	</div>
+        				</div>
+        				<div class="col-sm-6">
+        					<div class="form-group">
+					    	<label class="control-label">工号</label>
+					    	<div>
+					      		<input type="text" class="form-control" placeholder="工号" ng-model="user.num" vType="length" maxlength="5" onblur="onblurVali(this)">
+					    	</div>
+				    	</div>
+        					<div class="form-group">
+					    	<label class="control-label">性别</label>
+					    	<div>
+					      		<select class="form-control custom-select" ng-model="user.sex" ng-options="option.value as option.name for option in sexOptions">
+					      		</select>
+					    	</div>
+				    	</div>
+				    	<div class="form-group">
+					    	<label class="control-label">联系电话</label>
+					    	<div>
+					      		<input type="text" class="form-control" placeholder="联系电话" ng-model="user.mobile" vType="phone" maxlength="11" onblur="onblurVali(this)">
+					    	</div>
+				    	</div>
+				    	<div class="form-group">
+					    	<label class="control-label">邮箱</label>
+					    	<div>
+					      		<input type="text" class="form-control" placeholder="邮箱" ng-model="user.email" vType="email" onblur="onblurVali(this)">
+					    	</div>
+				    	</div>
+        				</div>
+        				<input type="hidden" ng-model="user.id">
+        			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+	    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="cancel()">关闭</button>
+	    <button type="button" class="btn btn-primary pull-right" ng-click="ok(user)">保存</button>
+    </div>
+</div>

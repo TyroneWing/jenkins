@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目管理-新增项目</title>
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	<!-- Bootstrap 3.3.4 -->
+    	<link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    	<!-- Font Awesome 3.2.1 -->
+    	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    	<link rel="stylesheet" href="css/app.css" />
+    	<link rel="stylesheet" href="css/table.css" />
+    	<link rel="stylesheet" href="css/box.css" />
+    	<link rel="stylesheet" href="css/button.css" />
+    	<link rel="stylesheet" href="css/modal.css" />
+<body>
+	<header id="header" class="clearfix">
+		<div class="wrapper">
+			<div class="logo pull-left">
+				<h3>项目管理系统</h3>
+			</div>
+			<div class="tools pull-right">
+				<div class="exit">
+					<a href="login.html" title="退出系统"><i class="fa fa-power-off"></i></a>
+				</div>
+			</div>
+			<div class="dropdown info pull-right">
+			  	<a class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+				    	欢迎回来，用户名 !
+			  	</a>
+			</div>
+		</div>
+	</header>
+	<div id="menu" class="clearfix">
+		<div class="wrapper" style="height: 100%; position: relative;">
+			<ul class="menu-list no-margin no-padding clearfix">
+				<li>
+					<a href="index.html">首页</a>
+				</li>
+				<li>
+					<a href="users.html">用户管理</a>
+				</li>
+			</ul>
+			<div class="pull-right tools">
+				<ul class="no-margin no-padding">
+					<li>
+						<input type="text" class="search-input" placeholder="请输入搜索内容">
+					</li>
+					<li>
+						<a href="javascript: void(0);" onclick="showSearchInput(this);">
+							<i class="fa fa-search"></i> 查询
+						</a>
+					</li>
+					<li class="division"></li>
+					<li>
+						<a href="detail-add.html">
+							<i class="fa fa-edit"></i> 保存
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<main>
+		<div class="wrapper">
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-sm-12">
+					<div class="box box-default">
+						<div class="box-header with-background clearfix">
+							<h4 class="box-title no-margin pull-left">新增项目</h4>
+						</div>
+						<div class="box-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="project-detail no-margin">
+										<div class="clearfix">
+											<div class="form-horizontal">
+											  	<div class="columns no-margin" style="width: 33%;">
+											  		<div class="form-group" style="margin-bottom: 30px;">
+													    	<label class="col-sm-4 control-label">项目编号</label>
+													    	<div class="col-sm-7">
+													      		<input type="text" class="form-control" placeholder="项目编号">
+													    	</div>
+													</div>
+													<div class="form-group" style="margin-bottom: 30px;">
+													    	<label class="col-sm-4 control-label">计划开始时间</label>
+													    	<div class="col-sm-7">
+													      		<input type="text" class="form-control" placeholder="计划开始时间">
+													    	</div>
+													</div>
+												</div>
+												<div class="columns no-margin" style="width: 33%;">
+													<div class="form-group" style="margin-bottom: 30px;">
+														<label class="col-sm-4 control-label">项目名称</label>
+													    	<div class="col-sm-7">
+													      		<input type="text" class="form-control" placeholder="项目名称">
+													    	</div>
+													</div>
+													<div class="form-group" style="margin-bottom: 30px;">
+													    	<label class="col-sm-4 control-label">计划完成时间</label>
+													    	<div class="col-sm-7">
+													      		<input type="text" class="form-control" placeholder="计划完成时间">
+													    	</div>
+													</div>
+												</div>
+												<div class="columns no-margin" style="width: 33%;">
+													<div class="form-group" style="margin-bottom: 30px;">
+													    	<label class="col-sm-4 control-label">负责人</label>
+													    	<div class="col-sm-7">
+													      		<select class="form-control custom-select">
+													      		</select>
+													    	</div>
+													</div>
+													<div class="form-group" style="margin-bottom: 30px;">
+													    	<label class="col-sm-4 control-label">预计耗时</label>
+													    	<div class="col-sm-7">
+													      		<input type="text" class="form-control" placeholder="预计耗时">
+													    	</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-horizontal">
+												<div style="width: 66%;">
+													<div class="form-group">
+													    	<label class="col-sm-2 control-label">配合人</label>
+													    	<div class="col-sm-8">
+													      		<ul class="user-list clearfix">
+										        						<li>
+										        							<button class="btn btn-plus-circle" data-toggle="modal" data-target="#detailAddUser"><i class="glyphicon glyphicon-plus"></i></button>
+										        						</li>
+										        					</ul>
+													    	</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-sm-6">
+					<div class="box box-default">
+						<div class="box-header with-background clearfix">
+							<h4 class="box-title no-margin pull-left">项目描述</h4>
+						</div>
+						<div class="box-body">
+							<textarea placeholder="请输入项目描述" style="width: 100%; resize: none; border: 0; min-height: 185px;"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="box box-default">
+						<div class="box-header with-background clearfix">
+							<h4 class="box-title no-margin pull-left">参考文件</h4>
+						</div>
+						<div class="box-body">
+							<ul class="file-list no-padding clearfix">
+								<li>
+									<button class="btn btn-plus-rect" data-toggle="modal" data-target="#uploadFile"><i class="glyphicon glyphicon-plus"></i></button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer></footer>
+
+	<div class="modal fade custom-modal bg-gray" id="detailAddUser" tabindex="-1" role="dialog" aria-labelledby="addUserModal" aria-hidden="true">
+		<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        				<h4 class="modal-title">富山项目</h4>
+		      		</div>
+		      		<div class="modal-body">
+		        			<div class="row">
+		        				<div class="col-sm-7">
+		        					<p>项目人员<span style="float: right; color: #777;">已选 0 人</span></p>
+		        					<div class="department-panel">
+		        						
+		        					</div>
+		        				</div>
+		        				<div class="col-sm-5">
+		        					<p>所有人员</p>
+		        					<div class="department-panel">
+		        						<p>广东天基网控环境科技有限公司</p>
+		        						<p><input type="checkbox"> 全选</p>
+			        					<div class="list-group department-list" id="#userList">
+								  	<div class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseOne" aria-controls="collapseOne">
+								  		<span class="pull-right">3  人</span>
+									    	<div class="name">技术研发部</div>
+								  	</div>
+								  	<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 张三
+									      </p>
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 王五
+									      </p>
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 刘六
+									      </p>
+								    	</div>
+									<div href="#" class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseTwo" aria-controls="collapseTwo">
+										<span class="pull-right">2  人</span>
+									    	<span class="name">产品运维部</span>
+									</div>
+									<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 李四
+									      </p>
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 钟董
+									      </p>
+								    	</div>
+									<div href="#" class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseThree" aria-controls="collapseThree">
+										<span class="pull-right">1  人</span>
+									    	<span class="name">行政部</span>
+									</div>
+									<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 钱久
+									      </p>
+								    	</div>
+									<div href="#" class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapseFour" aria-controls="collapseFour">
+										<span class="pull-right">1  人</span>
+									    	<span class="name">财务部</span>
+									</div>
+									<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+									      <p style="margin-left: 20px;">
+									      	<input type="checkbox"> 赵器
+									      </p>
+								    	</div>
+								</div>
+							  </div>
+		        				</div>
+		        			</div>
+		      		</div>
+		      		<div class="modal-footer">
+		        			<button type="button" class="btn btn-primary">确定</button>
+		      		</div>
+		    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div class="modal fade custom-modal no-title" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="uploadFileModal" aria-hidden="true">
+		<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		      		</div>
+		      		<div class="modal-body">
+		        			<form class="form-horizontal" role="form">
+						<div class="form-group">
+						    	<label for="inputEmail3" class="col-sm-2 control-label">选择文件</label>
+						    	<div class="col-sm-8">
+							     	<div class="input-group input-group-sm">
+				             					<input type="text" class="form-control" id="filename" readonly="readonly">
+						             			<input type="file" id="file" style="display:none" onchange="filename.value=this.value" />
+						             			<span class="input-group-btn">
+						               			<button class="btn btn-default btn-flat" type="button" onclick="file.click();">浏览</button>
+						             			</span>
+						           		</div>
+						    	</div>
+						    	<div class="col-sm-2">
+							    	<button class="btn btn-info btn-flat btn-sm" type="button" ng-click="uploadFile();">上传</button>
+						    	</div>
+					  	</div>
+				    	</form>
+		      		</div>
+		    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- jQuery 2.1.4 -->
+    	<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    	<!-- Bootstrap 3.3.2 JS -->
+    	<script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<script src="js/app.js"></script>
+</body>
+</html>

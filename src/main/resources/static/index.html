@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目管理</title>
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	<!-- Bootstrap 3.3.4 -->
+    	<link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    	<!-- Font Awesome 3.2.1 -->
+    	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    	<!-- Switchery -->
+    	<link href="plugins/switchery/switchery.css" rel="stylesheet" type="text/css" />
+    	<!-- Date Range Picker -->
+    	<link href="plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+
+    	<link rel="stylesheet" href="css/app.css">
+    	<link rel="stylesheet" href="css/table.css">
+    	<link rel="stylesheet" href="css/box.css">
+    	<link rel="stylesheet" href="css/button.css">
+    	<link rel="stylesheet" href="css/modal.css">
+</head>
+<body ng-controller="PlatformController">
+	<header id="header" class="clearfix">
+		<div class="wrapper">
+			<div class="logo pull-left">
+				<h3>
+					<img src="images/logo-white.png" alt="" style="margin-right: 15px;">项目管理系统
+				</h3>
+			</div>
+			<div class="tools pull-right">
+				<div class="exit">
+					<a title="退出系统" ng-click="logout();"><i class="fa fa-power-off"></i></a>
+				</div>
+			</div>
+			<div class="dropdown info pull-right">
+			  	<a class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+				    	欢迎回来，{{ userName }} !
+			  	</a>
+			</div>
+		</div>
+	</header>
+	
+	<div ng-view></div>
+	
+	<footer></footer>
+
+	<!-- jQuery 2.1.4 -->
+    	<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    	<!-- Bootstrap 3.3.2 JS -->
+    	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    	<!-- Switchery -->
+    	<script src="plugins/switchery/switchery.js"></script>
+    	<!-- loader -->
+   	<script src="plugins/center-loader/center-loader.min.js"></script>
+   	<!-- Date Range Picker  -->
+    	<script src="plugins/daterangepicker/moment.min.js"></script>
+    	<script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+   	<script src="js/global.js"></script>
+
+   	<script src="plugins/gantt/libs/date.js"></script>
+	<script src="plugins/gantt/libs/i18nJs.js"></script>
+   	<script src="plugins/gantt/ganttUtilities.js"></script>
+
+	<!-- AngularJS -->
+   	<script src="plugins/angularjs-1.5/angular.min.js"></script>
+    	<script src="plugins/angularjs-1.5/angular-route.min.js"></script>
+    	<script src="plugins/angularjs-1.5/ui-bootstrap-tpls.min.js"></script>
+    	<script src="plugins/angularjs-1.5/angular-sanitize.min.js"></script>
+     	<!-- Angular-xeditable -->
+    	<script src="plugins/angular-xeditable/js/xeditable.js"></script>
+
+    	<!-- platform -->
+	<script src="module/platform/app.js"></script>
+	<script src="module/platform/angular.permission.js"></script>
+	<script src="module/platform/platform.route.js"></script>
+	<script src="module/platform/platform.utils.js"></script>
+	<script src="module/platform/platform.controller.js"></script>
+	<!-- common -->
+	<script src="module/common/factory.js"></script>
+	<script src="module/common/util.js"></script>
+	<script src="module/common/validation.js"></script>
+	<!--  directive -->
+    	<script src="directive/pagination.directive.js"></script>
+    	<script src="directive/switchery.directive.js"></script>
+	<!-- popup -->
+    	<script src="module/popup/popup.service.js"></script>
+	<script src="module/popup/popup.controller.js"></script>
+
+	<!-- file -->
+	<script src="module/file/file.service.js"></script>
+	<!-- operate -->
+	<script src="module/operate/operate.service.js"></script>
+	<!-- project -->
+	<script src="module/projects/project.service.js"></script>
+	<script src="module/projects/project.list.controller.js"></script>
+	<script src="module/projects/project.add.controller.js"></script>
+	<script src="module/projects/project.detail.controller.js"></script>
+	<script src="module/projects/project.add.demand.controller.js"></script>
+	<!-- task -->
+	<script src="module/tasks/task.service.js"></script>
+	<!-- company -->
+	<script src="module/company/company.service.js"></script>
+	<script src="module/company/company.list.controller.js"></script>
+	<script src="module/company/company.detail.controller.js"></script>
+	<script src="module/company/company.add.controller.js"></script>
+	<script src="module/company/company.add.log.controller.js"></script>
+	<!-- user -->
+	<script src="module/users/user.service.js"></script>
+	<script src="module/users/user.list.controller.js"></script>
+	<script src="module/users/user.detail.controller.js"></script>
+	<script src="module/users/user.change.pwd.controller.js"></script>
+	<!-- role -->
+	<script src="module/roles/role.service.js"></script>
+	<!-- department -->
+	<script src="module/departments/department.service.js"></script>
+	<!-- userLoginfo -->
+	<script src="module/loginfo/loginfo.service.js"></script>
+	<script src="module/loginfo/loginfo.type.service.js"></script>
+</body>
+</html>

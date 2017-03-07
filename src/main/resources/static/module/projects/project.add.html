@@ -1,0 +1,236 @@
+<div id="menu" class="clearfix">
+	<div class="wrapper" style="height: 100%; position: relative;">
+		<ul class="menu-list no-margin no-padding clearfix">
+			<li class="actived">
+				<a href="#/platform/projects">首页</a>
+			</li>
+			<li>
+				<a href="#/platform/users">用户管理</a>
+			</li>
+			<li>
+				<a href="#/platform/companies">客户管理</a>
+			</li>
+		</ul>
+	</div>
+	<div class="operate-tools">
+		<ul class="no-margin no-padding clearfix">
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" ng-click="addProject(project);"><i class="fa fa-edit"></i> 保存</button>
+			</li>
+		</ul>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-12">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">新增项目</h4>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="project-detail no-margin">
+									<div class="clearfix">
+										<div class="form-horizontal">
+										  	<div class="columns no-margin" style="width: 33%;">
+										  		<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">项目编号</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="项目编号" ng-model="project.code">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">计划开始时间</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="计划开始时间" ng-model="project.planStart" id="planStart">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;" ng-if="projectId != null">
+												    	<label class="col-sm-4 control-label">实际开始时间</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="实际开始时间" ng-model="project.realStart" id="realStart">
+												    	</div>
+												</div>
+											</div>
+											<div class="columns no-margin" style="width: 33%;">
+												<div class="form-group" style="margin-bottom: 30px;">
+													<label class="col-sm-4 control-label">项目名称</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="项目名称" ng-model="project.name">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">计划完成时间</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="计划完成时间" ng-model="project.planEnd" id="planEnd">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;" ng-if="projectId != null">
+												    	<label class="col-sm-4 control-label">实际完成时间</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="实际完成时间" ng-model="project.realEnd" id="realEnd">
+												    	</div>
+												</div>
+											</div>
+											<div class="columns no-margin" style="width: 33%;">
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">负责人</label>
+												    	<div class="col-sm-7">
+												      		<select class="form-control custom-select" ng-model="project.manager" ng-options="option.id as option.name for option in userOptions">
+												      		</select>
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">预计耗时</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="预计耗时" disabled="disabled" ng-model="project.consumingTime">
+												    	</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-horizontal">
+											<div style="width: 66%;">
+												<div class="form-group">
+												    	<label class="col-sm-2 control-label">配合人</label>
+												    	<div class="col-sm-8">
+												      		<ul class="user-list clearfix">
+												      			<li ng-repeat="user in userList track by $index">
+									        							<img src="images/user-default.png" alt="..." class="img-circle img-thumbnail">
+									        							<span>{{ user.name }}</span>
+									        						</li>
+									        						<li>
+									        							<button class="btn btn-plus-circle" data-toggle="modal" data-target="#detailAddUser"><i class="glyphicon glyphicon-plus"></i></button>
+									        						</li>
+									        					</ul>
+												    	</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-sm-6">
+						<div class="box box-default">
+							<div class="box-header with-background clearfix">
+								<h4 class="box-title no-margin pull-left">项目描述</h4>
+							</div>
+							<div class="box-body">
+								<textarea placeholder="请输入项目描述" style="width: 100%; resize: none; border: 0; min-height: 185px;" ng-model="project.resume">{{ project.resume }}</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="box box-default">
+							<div class="box-header with-background clearfix">
+								<h4 class="box-title no-margin pull-left">参考文件</h4>
+							</div>
+							<div class="box-body">
+								<ul class="file-list min-height no-padding clearfix">
+									<li class="file" ng-repeat="file in fileList">
+										<span>
+											<i class="fa fa-file-o"></i>
+										</span>
+										<a>{{ file.name }}</a>
+									</li>
+									<li>
+										<button class="btn btn-plus-rect" data-toggle="modal" data-target="#uploadFile"><i class="glyphicon glyphicon-plus"></i></button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- select user -->
+<div class="modal fade custom-modal bg-gray" id="detailAddUser" tabindex="-1" role="dialog" aria-labelledby="addUserModal" aria-hidden="true">
+	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        				<h4 class="modal-title">人员选择</h4>
+	      		</div>
+	      		<div class="modal-body">
+	        			<div class="row">
+	        				<div class="col-sm-7">
+	        					<p>项目人员<span style="float: right; color: #777;">已选 {{ userList.length }} 人</span></p>
+	        					<div class="department-panel">
+	        						<div class="user-select-item" ng-repeat="user in userList track by $index">
+	        							<div class="box-header no-padding">
+									<span class="ng-binding">{{ user.name }}</span>
+									<div class="pull-right no-margin">
+					                   				<button class="btn btn-box-tool no-padding" ng-click="removeUser($index)">
+					                   					<i class="fa fa-times"></i>
+					                   				</button>
+					                 			</div>
+								</div>
+	        						</div>
+	        					</div>
+	        				</div>
+	        				<div class="col-sm-5">
+	        					<p>所有人员</p>
+	        					<div class="department-panel">
+	        						<p>广东天基网控环境科技有限公司</p>
+	        						<p><input type="checkbox" ng-click="selectAll($event)"> 全选</p>
+		        					<div class="list-group department-list" id="#userList">
+		        						<div ng-repeat="group in groups track by $index">
+								  	<div class="list-group-item" data-toggle="collapse" data-parent="#userList" data-target="#collapse{{ $index }}" aria-controls="collapse{{ $index }}">
+								  		<span class="pull-right">{{ group.userList.length }}  人</span>
+									    	<div class="name">{{ group.name }}</div>
+								  	</div>
+								  	<div id="collapse{{ $index }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ $index }}">
+									      <p style="margin-left: 20px;" ng-repeat="member in group.userList track by $index">
+									      	<input type="checkbox" ng-checked="isSelected(member.id)" ng-click="updateSelection($event, member.id, member.name)" value="{{ member.name }}"> {{ member.name }}
+									      </p>
+								    	</div>
+							    	</div>
+							</div>
+						  </div>
+	        				</div>
+	        			</div>
+	      		</div>
+	      		<div class="modal-footer">
+	        			<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+	      		</div>
+	    	</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- upload file -->
+<div class="modal fade custom-modal no-title" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="uploadFileModal" aria-hidden="true">
+	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	      		</div>
+	      		<div class="modal-body">
+	        			<form class="form-horizontal" role="form">
+					<div class="form-group">
+					    	<label for="inputEmail3" class="col-sm-2 control-label">选择文件</label>
+					    	<div class="col-sm-8">
+						     	<div class="input-group input-group-sm">
+			             					<input type="text" class="form-control" id="filename" readonly="readonly">
+					             			<input type="file" id="file" style="display:none" onchange="filename.value=this.value" />
+					             			<span class="input-group-btn">
+					               			<button class="btn btn-default btn-flat" type="button" onclick="file.click();">浏览</button>
+					             			</span>
+					           		</div>
+					    	</div>
+					    	<div class="col-sm-2">
+						    	<button class="btn btn-info btn-flat btn-sm" type="button" ng-click="doUpload('file');">上传</button>
+					    	</div>
+				  	</div>
+			    	</form>
+	      		</div>
+	    	</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

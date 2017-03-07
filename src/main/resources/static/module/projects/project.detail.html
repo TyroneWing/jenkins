@@ -1,0 +1,208 @@
+<div id="menu" class="clearfix">
+	<div class="wrapper" style="height: 100%; position: relative;">
+		<ul class="menu-list no-margin no-padding clearfix">
+			<li class="actived">
+				<a href="#/platform/projects">首页</a>
+			</li>
+			<li>
+				<a href="#/platform/users">用户管理</a>
+			</li>
+			<li>
+				<a href="#/platform/companies">客户管理</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-12">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">{{ project.name }}</h4>
+						<div class="box-tools pull-right">
+							<a class="btn btn-radius" id="show" style="background-color: #96a1b3;  color: #fff; border-color: #fff; margin-right: 20px;">
+								需求列表
+							</a>
+							<button class="btn btn-gray" ng-click="modifyProject(project.id)">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</button>
+						</div>
+					</div>
+					<div class="box-body no-padding">
+						<div class="row">
+							<div class="col-sm-8" style="padding-right: 0; border-right: 1px solid #E4E4E4;">
+								<div class="project-detail">
+									<div class="clearfix">
+									  	<div class="columns">
+									  		<div class="item clearfix">
+									  			<label>项目编号：</label>
+												<span>{{ project.code }}</span>
+									  		</div>
+											<div class="item clearfix">
+												<label>计划开始时间：</label>
+												<span>{{ project.planStart }}</span>
+											</div>
+											<div class="item clearfix">
+												<label>实际开始时间：</label>
+												<span>{{ project.realStart }}</span>
+											</div>
+											<div class="item clearfix">
+												<label>优先级：</label>
+												<span>{{ project.level }}</span>
+											</div>
+										</div>
+										<div class="columns" style="width: 40%;">
+											<div class="item clearfix">
+												<label>负责人：</label>
+												<span>{{ project.managerName }}</span>
+											</div>
+											<div class="item clearfix">
+												<label>计划完成时间：</label>
+												<span>{{ project.planEnd }}</span>
+											</div>
+											<div class="item clearfix">
+												<label>实际完成时间：</label>
+												<span>{{ project.realEnd }}</span>
+											</div>
+											<div class="item clearfix">
+												<label>进度：</label>
+												<div class="progress">
+												  	<div ng-class="{'0':'progress-bar progress-bar-success', '1':'progress-bar', '2':'progress-bar progress-bar-danger', '3': 'progress-bar progress-bar-warning', '10': 'progress-bar progress-bar-warning'}[project.state]" role="progressbar" aria-valuenow="{{ project.percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ project.percent }}%;">
+												    		{{ project.percent }}%
+												  	</div>
+												</div>
+											</div>
+										</div>
+										<div class="columns no-margin" style="width: 18%;">
+											<div class="item clearfix" ng-switch="project.state">
+												<label>状态：</label>
+												<span ng-switch-when="0" class="text-success">新增</span>  
+												<span ng-switch-when="1" class="text-primary">完结</span>
+												<span ng-switch-when="2" class="text-danger">取消</span>
+												<span ng-switch-when="3" class="text-danger">暂停</span>
+												<span ng-switch-when="10" class="text-warning">进行中</span>
+												<span ng-switch-default>{{ task.status }}</span> 
+											</div>
+											<div class="item clearfix">
+												<label>预计耗时：</label>
+												<span>{{ project.consumingTime }} 天</span>
+											</div>
+										</div>
+									</div>
+									<div style="margin-bottom: 20px;">
+										<span class="pull-left" style="line-height: 50px; margin-right: 10px;">配合人：</span>
+										<ul class="user-list clearfix">
+					        						<li ng-repeat="user in userList track by $index">
+					        							<img src="images/user-default.png" alt="..." class="img-circle img-thumbnail">
+					        							<span>{{ user.name }}</span>
+					        						</li>
+					        					</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4" style="padding-left: 0;">
+								<div class="box box-solid" style="box-shadow: none;">
+									<div class="box-header with-border clearfix">
+										<h5 class="box-title text-left" style="margin: 20px 0px;">项目描述</h5>
+									</div>
+									<div class="box-body" style="border: 0;">
+										{{ project.resume }}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-6">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">历史记录</h4>
+						<div class="box-tools pull-right">
+							<button class="btn btn-gray">
+								<i class="glyphicon glyphicon-align-justify"></i>
+							</button>
+						</div>
+					</div>
+					<div class="box-body no-padding">
+						<ul class="log-list min-height">
+							<!-- <li>
+								<span>2016-11-04 16:40 张三登录系统成功</span>
+							</li>
+							<li>
+								<span>2016-11-04 16:40 <a href="#">富山项目</a>发布成功</span>
+							</li>
+							<li>
+								<span>2016-11-04 16:40 <a href="#">牲畜无害化</a>发布成功</span>
+							</li>
+							<li>
+								<span>2016-11-04 16:40 <a href="#">海鸥项目</a>发布成功</span>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">附件记录</h4>
+						<div class="box-tools pull-right">
+							<button class="btn btn-gray">
+								<i class="glyphicon glyphicon-align-justify"></i>
+							</button>
+						</div>
+					</div>
+					<div class="box-body">
+						<ul class="file-list min-height no-padding clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<div class="right-content-loading">
+</div>
+<div class="right-content">
+       <div class="right-content-body">
+            <div class="close">
+                <i class="fa fa-remove"></i>
+            </div>
+            <div>
+            	<div style="height: 47px; line-height: 47px; background-color: #eee; padding-left: 20px; font-size: 16px; color: #555;">
+            		需求列表
+            	</div>
+            	<div class="demand" style="overflow-y: auto;">
+            		<ul class="demand-list no-padding">
+            			<li ng-repeat="log in logList track by $index">
+            				<a data-toggle="collapse" data-target="#collapse{{ $index }}" aria-expanded="true">
+            					<span class="demand-title">{{ log.title }}</span>
+            					<span class="demand-date">{{ log.time }}</span>
+            				</a>
+            				<div id="collapse{{ $index }}" class="panel-collapse collapse">
+            					<div style="margin-top: 10px;">{{ log.resume }}</div>
+            				</div>
+            			</li>
+            		</ul>
+            	</div>
+            </div>
+       </div>
+</div>
+
+<script type="text/javascript">
+	$('.demand').height($(document.body).height() - 70 - 47);
+
+	$('#show').click(function() {
+	    $(".right-content-loading").css('display','block'); 
+	    $('.right-content').css('right', '0px');
+	});
+	
+	$('.close').click(function() {
+	    $(".right-content-loading").css('display','none'); 
+	    $('.right-content').css('right', '-800px');
+	});
+</script>

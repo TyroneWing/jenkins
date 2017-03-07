@@ -1,0 +1,246 @@
+<div id="menu" class="clearfix">
+	<div class="wrapper" style="height: 100%; position: relative;">
+		<ul class="menu-list no-margin no-padding clearfix">
+			<li>
+				<a href="#/platform/projects">首页</a>
+			</li>
+			<li>
+				<a href="#/platform/users">用户管理</a>
+			</li>
+			<li class="actived">
+				<a href="#/platform/companies">客户管理</a>
+			</li>
+		</ul>
+	</div>
+	<div class="operate-tools">
+		<ul class="no-margin no-padding clearfix">
+			<li>
+				<button class="btn btn-radius btn-green-transparent btn-sm" ng-click="addCompany(company);"><i class="fa fa-edit"></i> 保存</button>
+			</li>
+		</ul>
+	</div>
+</div>
+<main>
+	<div class="wrapper">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-sm-12">
+				<div class="box box-default">
+					<div class="box-header with-background clearfix">
+						<h4 class="box-title no-margin pull-left">新增客户</h4>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="project-detail no-margin">
+									<div class="clearfix">
+										<div class="form-horizontal">
+										  	<div class="columns no-margin" style="width: 33%;">
+										  		<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">客户名称</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="客户名称" ng-model="company.name" vType="length" onBlur="onblurVali(this);">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">地址</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="地址" ng-model="company.address">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">行业类型</label>
+												    	<div class="col-sm-7">
+												      		<select class="form-control" ng-options="type.id as type.name for type in industryOptions"  ng-model="company.industryId">
+												      		</select>
+												    	</div>
+												</div>
+											</div>
+											<div class="columns no-margin" style="width: 33%;">
+												<div class="form-group" style="margin-bottom: 30px;">
+													<label class="col-sm-4 control-label">网站</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="网站" ng-model="company.www">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">邮箱</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="邮箱" ng-model="company.email">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">客户类型</label>
+												    	<div class="col-sm-7">
+												      		<select class="form-control" ng-options="type.id as type.name for type in typeOptions"  ng-model="company.flag">
+												      		</select>
+												    	</div>
+												</div>
+											</div>
+											<div class="columns no-margin" style="width: 33%;">
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">区域编号</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="区域编号" ng-model="company.areaCode" >
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	<label class="col-sm-4 control-label">电话</label>
+												    	<div class="col-sm-7">
+												      		<input type="text" class="form-control" placeholder="电话" ng-model="company.tel">
+												    	</div>
+												</div>
+												<div class="form-group" style="margin-bottom: 30px;">
+												    	
+												</div>
+											</div>
+										</div>
+										<div class="form-horizontal">
+											<div style="width: 66%;">
+												<div class="form-group">
+												    	<label class="col-sm-2 control-label">联系人</label>
+												    	<div class="col-sm-8">
+								        					<div class="user-select-item" ng-repeat="user in linkmanList track by $index">
+							        							<div class="box-header no-padding">
+							        								<div class="pull-left">
+																		<span class="ng-binding">{{ user.name }}</span></br>
+																		<span>{{ user.mobile }}</span>
+							        								</div>
+																	<div class="pull-right no-margin">
+											                   				<button class="btn btn-box-tool no-padding" ng-click="removeLinkman($index)">
+											                   					<i class="fa fa-times"></i>
+											                   				</button>
+								                 					</div>
+																</div>
+							        						</div>
+							        						<button class="btn btn-plus-circle" data-toggle="modal" data-target="#addLinkman"><i class="glyphicon glyphicon-plus"></i></button>
+												    	</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-horizontal">
+											<div style="width: 66%;">
+												<div class="form-group">
+												    	<label class="col-sm-2 control-label">跟进人</label>
+												    	<div class="col-sm-8">
+												    		<button class="btn  btn-plus-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-plus"></i></button>
+													      	<ul class="dropdown-menu custome-menu" aria-labelledby="dLabel" style="height: 250px; overflow-y: auto;">
+													      		<li ng-repeat="user in users"><a ng-click="addSalesman(user.id, user.name, user.mobile)">{{ user.name }}</a></li>
+															 </ul>
+															 <div class="user-select-item" ng-repeat="user in salesmanList track by $index">
+							        							<div class="box-header no-padding">
+							        								<div class="pull-left">
+																		<span class="ng-binding">{{ user.name }}</span></br>
+																		<span>{{ user.mobile }}</span>
+							        								</div>
+																	<div class="pull-right no-margin">
+											                   				<button class="btn btn-box-tool no-padding" ng-click="removeSalesman($index)">
+											                   					<i class="fa fa-times"></i>
+											                   				</button>
+								                 					</div>
+																</div>
+						        							</div>
+												    	</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-sm-6">
+						<div class="box box-default">
+							<div class="box-header with-background clearfix">
+								<h4 class="box-title no-margin pull-left">客户描述</h4>
+							</div>
+							<div class="box-body">
+								<textarea class="form-control" placeholder="请输入客户描述内容" style="width: 100%; resize: none; border: 0; min-height: 185px;" ng-model="company.resume">{{ company.resume }}</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="box box-default">
+							<div class="box-header with-background clearfix">
+								<h4 class="box-title no-margin pull-left">项目列表</h4>
+								<div class="box-tools pull-right">
+									<button class="btn btn-gray" data-toggle="modal" data-target="#addProject">
+										<i class="glyphicon glyphicon-plus"></i>
+									</button>
+								</div>
+							</div>
+							<div class="box-body no-padding">
+								<table class="table">
+								 	<tr>
+								  		<td class="no-padding">
+									   		<table class="table no-margin">
+									     		<tr style="background-color: #f6f6f6;">
+									     			<th style="width: 40px"></th>
+													<th>项目名称</th>
+													<th style="width: 80px;">状态</th>
+												</tr>
+									   		</table>
+								  		</td>
+								 	</tr>
+									<tr>
+										<td class="no-padding">
+									  		 <div style="width:100%; height:111px; overflow:auto;">
+											     <table class="table">
+										       		<tr ng-repeat="project in projects track by $index">
+										       			<td class="text-center" style="width: 40px;"><input type="checkbox" ng-checked="isSelected(project.id)" ng-click="updateSelection($event, project.id, project.name)" value="{{ project.name }}"></td>
+										       			<td>{{ project.name }}</td>
+														<td style="width: 80px;" ng-switch="project.state">
+															<span ng-switch-when="0" class="text-success">新增</span>  
+															<span ng-switch-when="1" class="text-primary">完结</span>
+															<span ng-switch-when="2" class="text-danger">取消</span>
+															<span ng-switch-when="3" class="text-danger">暂停</span>
+															<span ng-switch-when="10" class="text-warning">进行中</span>
+															<span ng-switch-default>{{ task.status }}</span> 
+														</td>
+										       		</tr>
+											     </table>
+									   		</div>
+									   		<div class="pull-right" style="margin-right: 20px;">
+												<tk-pagination pages="pages"></tk-pagination>
+											</div>
+								  		</td>
+								 	</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- select user -->
+<div class="modal fade custom-modal" id="addLinkman" tabindex="-1" role="dialog" aria-labelledby="addUserModal" aria-hidden="true">
+	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        				<h4 class="modal-title">添加联系人</h4>
+	      		</div>
+	      		<div class="modal-body">
+	        			<div class="row">
+	        				<div class="col-sm-12">
+	        					<div class="form-group">
+									<label class="control-label">姓名</label>
+									<input type="text" class="form-control" placeholder="姓名" ng-model="linkman.name" id="linkman-name">
+								</div>
+								<div class="form-group">
+									<label class="control-label">电话</label>
+									<input type="text" class="form-control" placeholder="电话" ng-model="linkman.mobile" id="linkman-tel">
+								</div>
+	        				</div>
+	        			</div>
+	      		</div>
+	      		<div class="modal-footer">
+	        			<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addLinkman(linkman);">确定</button>
+	      		</div>
+	    	</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
